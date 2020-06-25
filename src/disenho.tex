@@ -1,51 +1,50 @@
 \chapter{Diseño\label{sec:disenho}}
 
 \section{Base de datos}
-Para poder implementar los servicios de notificaciones push es necesaria una forma de acceder a los datos que se solicitan en las peticiones de tipo \textit{establish-subscription}. El sistema que proporcione estos datos debe cumplir varias condiciones:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Para poder implementar los servicios de notificaciones push es necesaria una forma de acceder a los
+datos que se solicitan en las peticiones de tipo \textit{establish-subscription}. El sistema que 
+proporcione estos datos debe cumplir varias condiciones:
 
 \begin{enumerate}
-\item Primero, debe ser capaz de almacenar los datos siguiendo el esquema YANG correspondiente. El lenguaje YANG define una estructura de datos en forma de árbol, definiendo la jerarquía entre objetos y pudiéndose codificar en diferentes lenguajes como pueden ser \gls{XML} o \gls{JSON}. Por ejemplo el siguiente modelo YANG ~\ref{lst:ejemplo-yang} se corresponde a los datos XML listados en el Código \ref{lst:ejemplo-instancia-yang}:
+    \item Primero, debe ser capaz de almacenar los datos siguiendo el esquema YANG correspondiente. 
+    El lenguaje YANG define una estructura de datos en forma de árbol, definiendo la jerarquía entre
+    objetos y pudiéndose codificar en diferentes lenguajes como pueden ser \gls{XML} o \gls{JSON}.
+    Por ejemplo el siguiente modelo YANG ~\ref{lst:ejemplo-yang} se corresponde a los datos \gls{XML}
+    listados en el Código \ref{lst:ejemplo-instancia-yang}:
+    
+    \lstinputlisting[label={lst:ejemplo-yang}, 
+                        frame=single,
+                        caption=Ejemplo de modelo YANG]
+                        {src/code_snippets/ejemplo_yang_1.txt}
+                        
+    \lstinputlisting[label={lst:ejemplo-instancia-yang},
+                        language=XML, 
+                        frame=single,
+                        caption=Una posible instancia del modelo YANG anterior]
+                        {src/code_snippets/ejemplo_intancia_yang.xml}
 
-\begin{lstlisting}[label={lst:ejemplo-yang}, frame=single,caption=Ejemplo de modelo YANG]
-module: ultraconfig-interfaces
-  +--rw interfaces
-     +--rw interface* [name]
-     |  +--rw name           string
-     |  +--rw address        dotted-quad
-     |  +--rw subnet-mask    dotted-quad
-     |  +--rw enabled?       boolean
-     +--ro interface-state* [name]
-        +--ro name           string
-        +--ro oper-status    enumeration
-\end{lstlisting}
-
-\begin{lstlisting}[label={lst:ejemplo-instancia-yang}, language=XML, frame=single,caption=Una posible instancia del modelo YANG anterior]
-<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
-  <interfaces xmlns="http://ultraconfig.com.au/ns/yang/ultraconfig-interfaces">
-    <interface>
-      <name>GigabitEthernet 0/0/0</name>
-      <address>10.10.10.1</address>
-      <subnet-mask>255.255.255.0</subnet-mask>
-    </interface>
-    <interface>
-      <name>GigabitEthernet 0/0/1</name>
-      <address>192.168.1.1</address>
-      <subnet-mask>255.255.255.0</subnet-mask>
-    </interface>
-  </interfaces>
-</data>
-\end{lstlisting}
-
-\item Debe ser compatible con, al menos, el lenguaje de programación utilizado, en este caso, Python 3.x, aunque es preferible que exista soporte para otros lenguajes.
-\item Debe proporcionar algún mecanismo de notificación de cambios de los datos para poder proporcionar notificaciones de tipo \textit{on-change} sin necesidad de hacer \textit{pooling}.
+    \item Debe ser compatible con, al menos, el lenguaje de programación utilizado, en este caso,
+    Python 3.x, aunque es preferible que exista soporte para otros lenguajes.
+    
+    \item Debe proporcionar algún mecanismo de notificación de cambios de los datos para poder
+    proporcionar notificaciones de tipo \textit{on-change} sin necesidad de hacer \textit{pooling}.
 \end{enumerate}
 
-En base a los criterios anteriores se han elegido tres bases de datos candidatas: MongoDB, Prometheus y Redis.
+En base a los criterios anteriores se han elegido tres bases de datos candidatas: MongoDB,
+Prometheus y Redis.
 
 \subsection{MongoDB}
-MongoDB es una base de datos multiplataforma orientada a documentos, clasificada como una base de datos NoSQL, que usa el lenguaje BSON, muy similar a JSON en vez del modelo tradicional de las bases de datos relacionales donde los datos se almacenan en filas. 
+MongoDB es una base de datos multiplataforma orientada a documentos, clasificada como una base de 
+datos NoSQL, que usa el lenguaje BSON, muy similar a JSON en vez del modelo tradicional de las 
+bases de datos relacionales donde los datos se almacenan en filas. 
 
-Como podemos ver en la figura~\ref{fig:Mongo_vs_RDBMS}, las tablas se corresponden a colecciones, las filas se corresponden a documentos y las columnas se corresponden a campos de los documentos pero con la ventaja de que MongoDB usa un modelo \textit{schemaless}, por tanto, los campos de los documentos no son fijos. Dentro de una misma colección cada documento puede tener diferentes campos, permitiendo la modificación de la estructura de un documento sin tener restricciones impuestas por la colección (en un RDBMS todas las filas tienen las mismas columnas, es menos flexible). 
+Como podemos ver en la figura~\ref{fig:Mongo_vs_RDBMS}, las tablas se corresponden a colecciones,
+las filas se corresponden a documentos y las columnas se corresponden a campos de los documentos
+pero con la ventaja de que MongoDB usa un modelo \textit{schemaless}, por tanto, los campos de los
+documentos no son fijos. Dentro de una misma colección cada documento puede tener diferentes campos,
+permitiendo la modificación de la estructura de un documento sin tener restricciones impuestas por
+la colección (en un RDBMS todas las filas tienen las mismas columnas, es menos flexible). 
 
 % TODO: añadir imágen  de objetos distintos en la misma colección emulando uno de los modelos yang.
 
@@ -56,26 +55,30 @@ Como podemos ver en la figura~\ref{fig:Mongo_vs_RDBMS}, las tablas se correspond
     \label{fig:Mongo_vs_RDBMS}
 \end{figure}
 
-Como ya hemos visto en la introducción de este apéndice, al ser capaz de guardar datos con una estructura JSON es muy idoneo para este proyecto. Además es compatible con muchos lenguajes de programación como C, CSharp, C++, Go, Java, Javascript, PHP y \textbf{Python}.
+Como ya hemos visto en la introducción de este apéndice, al ser capaz de guardar datos con una
+estructura JSON es muy idoneo para este proyecto. Además es compatible con muchos lenguajes de 
+programación como C, CSharp, C++, Go, Java, Javascript, PHP y \textbf{Python}.
 \subsection{Prometheus}
 Prometheus \cite{prometheus} es una aplicación open-source usada para la
-monitorización de eventos y envío de alertas en tiempo real. Usa base de datos orientada a series temporales, dónde cada serie se identifica por un nombre, P.E \enquote{ Used Bandwidth \%}, y un conjunto de pares clave-valor. Además, cuenta con un potente lenguaje de consultas llamado PromQL que permite la manipulación de series temporales para la generación de gráficos, tablas y alertas.
+monitorización de eventos y envío de alertas en tiempo real. Usa base de datos orientada a series
+temporales, dónde cada serie se identifica por un nombre, P.E \enquote{ Used Bandwidth \%}, y un
+conjunto de pares clave-valor. Además, cuenta con un potente lenguaje de consultas llamado PromQL
+que permite la manipulación de series temporales para la generación de gráficos, tablas y alertas.
 
 
+\subsection{Redis} 
+\subsection{Decisión de diseño}
 
-% \subsection{Redis} 
-% \subsection{Decisión de diseño}
 
+\section{Virtualizacion}
+  \subsection{Maquinas Virtuales}
+  \subsection{Docker}
+  \subsection{Kubernetes}
+\subsection{Decisión de diseño}
 
-% \section{Virtualizacion}
-%   \subsection{Maquinas Virtuales}
-%   \subsection{Docker}
-%   \subsection{Kubernetes}
-% \subsection{Decisión de diseño}
-
-% \begin{figure}
-%     \centering
-%     \includegraphics{graphics/docker.png}
-%     \caption{Caption}
-%     \label{fig:my_label}
-% \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{graphics/docker.png}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
