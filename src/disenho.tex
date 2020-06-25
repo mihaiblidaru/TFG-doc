@@ -1,7 +1,7 @@
 \chapter{Diseño\label{sec:disenho}}
 
 \section{Base de datos}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Para poder implementar los servicios de notificaciones push es necesaria una forma de acceder a los
 datos que se solicitan en las peticiones de tipo \textit{establish-subscription}. El sistema que 
 proporcione estos datos debe cumplir varias condiciones:
@@ -32,7 +32,7 @@ proporcione estos datos debe cumplir varias condiciones:
 \end{enumerate}
 
 En base a los criterios anteriores se han elegido tres bases de datos candidatas: MongoDB,
-Prometheus y Redis.
+Prometheus y Redis. A continuación se van a evaluar cada una de ellas con el fin de elegir la base de datos más adecuada para el proyecto. En el Anexo \ref{appendix:bases_de_datos} se adjunta una tabla comparativa de los tres sistemas.
 
 \subsection{MongoDB}
 MongoDB es una base de datos multiplataforma orientada a documentos, clasificada como una base de 
@@ -56,17 +56,53 @@ la colección (en un RDBMS todas las filas tienen las mismas columnas, es menos 
 \end{figure}
 
 Como ya hemos visto en la introducción de este apéndice, al ser capaz de guardar datos con una
-estructura JSON es muy idoneo para este proyecto. Además es compatible con muchos lenguajes de 
+estructura \gls{JSON} es muy idoneo para este proyecto. Además es compatible con muchos lenguajes de
 programación como C, CSharp, C++, Go, Java, Javascript, PHP y \textbf{Python}.
 \subsection{Prometheus}
-Prometheus \cite{prometheus} es una aplicación open-source usada para la
-monitorización de eventos y envío de alertas en tiempo real. Usa base de datos orientada a series
-temporales, dónde cada serie se identifica por un nombre, P.E \enquote{ Used Bandwidth \%}, y un
-conjunto de pares clave-valor. Además, cuenta con un potente lenguaje de consultas llamado PromQL
-que permite la manipulación de series temporales para la generación de gráficos, tablas y alertas.
+Prometheus \cite{prometheus} es una aplicación open-source usada para la monitorización de 
+eventos y envío de alertas en tiempo real. Usa base de datos orientada a series temporales, 
+dónde cada serie se identifica por un nombre, P.E \enquote{Used Bandwidth \%}, y un conjunto 
+de pares clave-valor. Además, cuenta con un potente lenguaje de consultas llamado PromQL que
+permite la manipulación de series temporales para la generación de gráficos, tablas y alertas.
 
+Desgraciadamente, este sistema no cumple con varios de nuestros requisitos. En primer lugar,
+está optimizado para series temporales mientras que para este proyecto se necesita guardar
+instancias de modelos YANG. En segundo lugar, aunque Prometheus dispone de un sistema de alertas
+llamado \textit{alertmanager} los tipos de notificaciones de proporciona no se corresponde con las 
+necesidades del proyecto. Tal como se ha explicado al principio de esta sección, se necesita un 
+mecanismo que detecte cambios en las instancias de los modelos YANG soportados y notificar el 
+hilo/proceso que estuviese monitorizando un subárboles determinado de un modelo YANG. Sin embargo,
+el \textit{alertmanager} lo que proporciona son alertas basadas en eventos (P.E Temperatura de la 
+CPU > 90º durante más de 2 minutos) para administradores de sistemas, ofreciendo diferentes canales
+como Slack, Telegram, Correo, SMS, etc. 
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=15cm]{graphics/prometheus_architecture.png}
+    \caption{Arquitectura de Prometheus}
+    \label{fig:prometheus_estructura}
+\end{figure}
 
 \subsection{Redis} 
+Redsis \cite{redsis_main_page} es un sistema de almacenamiento de datos en memoria de código abierto (licencia BSD) que se utiliza como base de datos, caché y como sistema de envío de mensajes. Admite estructuras de datos como cadenas, hashes, listas, conjuntos, conjuntos ordenados, mapas de bits, indices geoespaciales y flujos. Redis tiene replicación integrada, soporta scripting LUA, transacciones y distintos niveles de persistencia en disco. 
+
+Redis guarda los datos en una estructura de tipo Hashtable como pares clave-valor soportando todos los
+tipos de datos ya mencionados. Sin embargo, no permite la existencia de objetos anidados y por tanto no es capaz de representar un objeto YANG de forma completa (solo podría representar un solo nivel).
+Además, no existe soporte para la mayoría de tipos de datos que podemos encontrar en las hojas de un modelo YANG como Integer16/32/64, Float y Double.
+
+Redis tiene un sistema de alertas/notificaciones llamado Redis Keyspace Notifications que permite
+a clientes subscribirse a canales para recibir notificaciones de eventos que afectan los datos de Redis. 
+
+Sin embargo, debido a las limitaciones de este tipo de almacenamiento, considero que el sistema no es adecuado.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=15cm]{graphics/redis-data-structure-types.jpeg}
+    \caption{Estructura de Datos de Redis}
+    \label{fig:redis_estructura}
+\end{figure}
+
 \subsection{Decisión de diseño}
 
 
@@ -82,3 +118,4 @@ que permite la manipulación de series temporales para la generación de gráfic
     \caption{Caption}
     \label{fig:my_label}
 \end{figure}
+sdf

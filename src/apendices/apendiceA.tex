@@ -1,23 +1,8 @@
-\chapter{Comparativa bases de datos\label{sec:ejemplos}}
-\section{Introducción}
-Para poder implementar los servicios de notificaciones push es necesaria una forma de acceder a los datos que se solicitan en las peticiones de tipo \textit{establish-subscription}. El sistema que proporcione estos datos debe cumplir varias condiciones:
+\chapter{Tabla comparativa bases de datos\label{appendix:bases_de_datos}}
 
+Para obtener información de forma más rápida y poder comparar fácilmente las características 
+de los tres sistemas se ha usado el portal \href{https://db-engines.com/en/system/MongoDB\%3BPrometheus\%3BRedis}{DB-engines.com}. 
+La siguiente tabla contiene las características principales de cada uno de ellos. Esta información
+solo tiene carácter orientativo y será contrastada a la hora de tomar una decisión de diseño
 
-
-\section{Backends}
-En esta sección describiré brevemente cada uno de los tres Backends estudiados y sus capacidades en relación con nuestros requisitos.
-\subsection{MongoDB}
-MongoDB es una base de datos multiplataforma orientada a documentos, clasificada como una base de datos NoSQL, que usa el lenguaje BSON, muy similar a JSON en vez del modelo tradicional de las bases de datos relacionales donde los datos se almacenan en filas. 
-
-Como ya hemos visto en la introducción de este apéndice, al ser capaz de guardar datos con una estructura JSON es muy idoneo para este proyecto. Además es compatible con muchos lenguajes de programación como C, CSharp, C++, Go, Java, Javascript, PHP y \textbf{Python}.
-
-En consideración a las notificaciones de tipo \textit{on-change} mongodb
-
-
-\subsection{Prometheus}
-\subsection{Redsis}
-\section{Resultados}
-\section{Conclusiones}
-
-\cite{knuth:1984} test referencia bibtex
-\cite{ipv4sta}
+\includepdf[pages=-]{graphics/tabla_comparativa_bases_de_datos.pdf}

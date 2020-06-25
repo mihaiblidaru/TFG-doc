@@ -1,5 +1,5 @@
 % Clase del documento
-\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+\documentclass[a4paper, 12pt, twoside, openright, titlepage]{book}
 
 %
 % Paquetes necesarios
@@ -60,9 +60,38 @@
 % Fuentes
 \usepackage[T1]{fontenc}
 % Bibliografía
-\usepackage[sorting=none,natbib=true,backend=bibtex,bibencoding=ascii]{biblatex}
+\usepackage[sorting=none,natbib=true,backend=biber,bibencoding=ascii]{biblatex}
 % Fix biblatex+babel warning
 \usepackage{csquotes}
+
+
+
+
+\DeclareBibliographyDriver{standard}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit\newblock
+  \printfield{number}%
+  \setunit{\addspace}\newblock
+  \printfield[parens]{type}%
+  \newunit\newblock
+  \usebibmacro{location+date}%
+  \newunit\newblock
+  \iftoggle{bbx:url}
+    {\usebibmacro{url+urldate}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}}
+
+
 
 % Enlaces
 \hypersetup{hidelinks,pageanchor=true,colorlinks,citecolor=Fuchsia,urlcolor=black,linkcolor=Cerulean}
@@ -113,7 +142,7 @@
 \fancyfoot[CO]{\footnotesize\emph{\nombretrabajo}}
 \fancyfoot[RO]{\thepage}
 \renewcommand{\footrulewidth}{.6pt}
-\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\headrulewidth}{0.2pt}
 }
 
 % Estilo resto de páginas
