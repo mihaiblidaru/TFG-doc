@@ -1,0 +1,10 @@
+module: ultraconfig-interfaces
+  +--rw interfaces
+     +--rw interface* [name]
+     |  +--rw name           string
+     |  +--rw address        dotted-quad
+     |  +--rw subnet-mask    dotted-quad
+     |  +--rw enabled?       boolean
+     +--ro interface-state* [name]
+        +--ro name           string
+        +--ro oper-status    enumeration
