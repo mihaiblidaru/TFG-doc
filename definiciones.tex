@@ -63,9 +63,12 @@
 \usepackage[sorting=none,natbib=true,backend=biber,bibencoding=ascii]{biblatex}
 % Fix biblatex+babel warning
 \usepackage{csquotes}
+% debug
+\usepackage{etoolbox}
 
+\usepackage{datetime2}
 
-
+\pdfminorversion=7
 
 \DeclareBibliographyDriver{standard}{%
   \usebibmacro{bibindex}%
@@ -113,6 +116,9 @@
 \definecolor{Cerulean}{rgb}{0,0,0}
 \definecolor{Fuchsia}{rgb}{0,0,0}
 
+\providetoggle{isDraft}
+\settoggle{isDraft}{true}
+
 % Keywords (español e inglés)
 \def\keywordsEn{\vspace{.5em}
 {\textbf{\textit{Key words ---}}\,\relax%
@@ -123,6 +129,8 @@
 {\textbf{\textit{Palabras clave ---}}\,\relax%
 }}
 \def\endkeywordsEs{\par}
+
+
 
 
 % Abstract (español e inglés)
