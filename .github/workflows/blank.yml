@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: install_deps
-      run: sudo apt install libxml2-utils
+      run: sudo apt install libxml2-utils texlive-full
 
     # Runs a single command using the runners shell
     - name: build_pdf
