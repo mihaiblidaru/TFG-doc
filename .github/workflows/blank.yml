@@ -22,11 +22,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
         uses: actions/checkout@v2
+        
       - name: Set tag name
         id: vars
-        run: echo "::set-output name=sha_short::$(echo ${{ github.sha }} | head -c 8)"
-      - name: Check outputs
-        run: echo ${{ steps.vars.outputs.sha_short }}
+        run: echo "::set-output name=rel_tag::$(date -u '+%y.%m%d.%H%M')"
         
       # compile tex files and build pdf
       - name: build_pdf
@@ -41,8 +40,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ steps.vars.outputs.sha_short }}
-          release_name: Release ${{ steps.vars.outputs.sha_short }}
+          tag_name: ${{ steps.vars.outputs.rel_tag }}
+          release_name: Release ${{ steps.vars.outputs.rel_tag }}
           draft: false
           prerelease: false
     
