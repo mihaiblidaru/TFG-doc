@@ -5,7 +5,7 @@
 
 # Compilar
 pdflatex main.tex
-bibtex main
+biber main
 makeglossaries main
 pdflatex main.tex
 pdflatex main.tex
