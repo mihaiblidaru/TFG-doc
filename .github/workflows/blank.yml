@@ -22,17 +22,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
         uses: actions/checkout@v2
-      
+      - name: Set tag name
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+        
       # compile tex files and build pdf
       - name: build_pdf
         run: |
           chmod +x compilar.sh
           chmod +x limpiar.sh
           ./compilar.sh
-      - name: Set tag name
-        id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-        
+          
       - name: Create a Release
         id: create_release
         uses: actions/create-release@v1
