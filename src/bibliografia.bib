@@ -46,3 +46,32 @@
   year={2005},
   publisher={"O'Reilly Media, Inc."}
 }
+
+@misc{RFC8641,
+        series =        {Request for Comments},
+        number =        8641,
+        howpublished =  {RFC 8641},
+        publisher =     {RFC Editor},
+        doi =           {10.17487/RFC8641},
+        url =           {https://rfc-editor.org/rfc/rfc8641.txt},
+        author =        {Alexander Clemm and Eric Voit},
+        title =         {{Subscription to YANG Notifications for Datastore Updates}},
+        pagetotal =     58,
+        year =          2019,
+        month =         sep,
+        abstract =      {This document describes a mechanism that allows subscriber applications to request a continuous and customized stream of updates from a YANG datastore. Providing such visibility into updates enables new capabilities based on the remote mirroring and monitoring of configuration and operational state.},
+}
+
+%% You should probably cite rfc8641 instead of this I-D.
+@techreport{draft-ietf-netconf-yang-push-00,
+        number =        {draft-ietf-netconf-yang-push-00},
+        type =          {Internet-Draft},
+        institution =   {Internet Engineering Task Force},
+        publisher =     {Internet Engineering Task Force},
+        note =          {Work in Progress},
+        url =           {https://datatracker.ietf.org/doc/html/draft-ietf-netconf-yang-push-00},
+        author =        {Alex Clemm and Alberto Gonzalez Prieto and Eric Voit},
+        title =         {{Subscribing to YANG datastore push updates}},
+        pagetotal =     51,
+        abstract =      {This document defines a subscription and push mechanism for YANG datastores. This mechanism allows client applications to request updates from a YANG datastore, which are then pushed by the server to the client per a subscription policy, without requiring additional client requests.},
+}

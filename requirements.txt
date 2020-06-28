@@ -1,0 +1,4 @@
+# Este paquete genera referencias bibliograficas a partir de
+# referenicas a RFCs o borradores
+# Ejemplo: rfcbibtex RFC8641 draft-ietf-netconf-yang-push-00
+rfcbibtex

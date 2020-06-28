@@ -1,14 +1,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \gls{SNMP} es un protocolo de capa de aplicación usado para la recolección y organización de
-información de los dispositivos gestionados y la modificación de dicha información con el fin de modificar el comportamiento de dichos dispositivos. Entre los dispositivos que soportan SNMP encontramos módems, router, switches, servidores, estaciones de trabajo, etc.
+información de los dispositivos gestionados y la modificación de dicha información con el fin de 
+modificar el comportamiento de dichos dispositivos. Entre los dispositivos que soportan SNMP 
+encontramos módems, router, switches, servidores, estaciones de trabajo, etc.
 
-La base de SNMP es un simple conjunto de operaciones que permite a los administradores cambiar el
-estado de dispositivos SNMP. Por ejemplo, se puede usar SNMP para apagar una interfaz de un router o
+La base de \gls{SNMP} es un simple conjunto de operaciones que permite a los administradores cambiar el
+estado de dispositivos SNMP. Por ejemplo, se puede usar \gls{SNMP} para apagar una interfaz de un router o
 comprobar la velocidad a la que una interfaz Ethernet está operando. 
 
 \subsubsection{Gestores y Agentes}
 
-En el mundo SNMP existen dos tipos de entidades: gestores (SNMP Managers) y agentes. 
+En el mundo \gls{SNMP} existen dos tipos de entidades: gestores (\gls{SNMP} Managers) y agentes. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Un \textbf{SNMP Manager} también llamado Sistema de Gestión de Red (Network Management System o NMS)
@@ -80,23 +82,44 @@ Las operaciones que pueden realizar dentro del protocolo SNMP son las siguientes
 
 \begin{itemize}
     \item GET: La operación GET es una petición enviada por un gestor a un agente para obtener uno o
-    más valores del agente.
+    más valores del agente. Figura \ref{fig:snmp_get}
     \item GET NEXT: Esta operación es similar a GET. La principal diferencia es que GET NEXT obtiene
     el valor del siguiente OID del árbol MIB.
     \item GET BULK (SNMPv2 y v3): Operación usada para obtener grandes volúmenes de datos desde tablas
-    MIB grandes.
+    MIB grandes.Figura \ref{fig:snmp_bulk}
     \item SET: Esta operación es usada por los gestores para modificar o asignar un valor dentro de un
-    agente.
+    agente.Figura \ref{fig:snmp_set}
     \item TRAPS: Los TRAPS son señales enviadas por los agentes para notificar a los gestores de algún
-    evento.
+    evento.Figura \ref{fig:snmp_trap}
     \item INFORM: similar a una TRAP, pero a diferencia de este INFORM incluye la confirmación por
-    parte del gestor SNMP de la recepción del mensaje
+    parte del gestor \gls{SNMP} de la recepción del mensaje
     \item RESPONSE: este es el comando usado para devolver valores a los gestores SNMP.
 \end{itemize}
 
 \begin{figure}
     \centering
-    \includegraphics[width=.3\linewidth]{graphics/snmp_get}
-    \caption{Secuencia operación GET}
+    \includegraphics[width=.5\linewidth]{graphics/snmp_get}
+    \caption{SNMP Get Sequence}
     \label{fig:snmp_get}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\linewidth]{graphics/snmp_set}
+    \caption{SNMP Set Sequence}
+    \label{fig:snmp_set}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\linewidth]{graphics/snmp_get_bulk}
+    \caption{SNMP Get Bulk Sequence}
+    \label{fig:snmp_bulk}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\linewidth]{graphics/snmp_trap}
+    \caption{SNMP Trap Sequence}
+    \label{fig:snmp_trap}
 \end{figure}
