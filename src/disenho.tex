@@ -84,6 +84,10 @@ como Slack, Telegram, Correo, SMS, etc.
     \label{fig:prometheus_estructura}
 \end{figure}
 
+Sin embargo, aunque no sea un sistema adecuado para almacenar los datos de un datastore YANG, se podría estudiar la utilización de Prometheus como sistema de visualización de series temporales que recibiría el cliente a través de notificaciones NETCONF, P.E. el cliente se podría subscribir para recibir la temperatura de la CPU cada 0.5 segundos y se podría utilizar Prometheus para almacenar esa serie temporal y usar sus herramientas de visualización para interpretar los datos 
+
+
+
 \subsection{Redis} 
 Redsis \cite{redsis_main_page} es un sistema de almacenamiento de datos en memoria de código abierto (licencia BSD) que se utiliza como base de datos, caché y como sistema de envío de mensajes. Admite estructuras de datos como cadenas, hashes, listas, conjuntos, conjuntos ordenados, mapas de bits, indices geoespaciales y flujos. Redis tiene replicación integrada, soporta scripting LUA, transacciones y distintos niveles de persistencia en disco. 
 
@@ -106,15 +110,18 @@ Sin embargo, debido a las limitaciones de este tipo de almacenamiento, considero
 \subsection{Decisión de diseño}
 
 
+
+
+
 \section{Virtualizacion}
   \subsection{Maquinas Virtuales}
   \subsection{Docker}
   \subsection{Kubernetes}
 \subsection{Decisión de diseño}
 
-\begin{figure}
-    \centering
-    \includegraphics{graphics/docker.png}
-    \caption{Caption}
-    \label{fig:my_label}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics{graphics/docker.png}
+%     \caption{Caption}
+%     \label{fig:my_label}
+% \end{figure}

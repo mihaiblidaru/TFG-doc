@@ -54,14 +54,12 @@ primeros niveles están asignados a organizaciones de normalización (ISO, CCITT
 los niveles más bajos están asignadas a organizaciones asociadas. En la Figura \ref{fig:mib_tree} 
 se puede observas esta forma de organización.
 
-
 Existe un gran número de MIBs definidos por organizaciones como la \gls{IETF} así como entidades
 privadas y fabricantes. La base de datos más común para la gestión de equipos en Internet es la base
-MIB-II definida en el \textit{RFC1213} y ampliada con la aparición de las versiones 2 y 3 de SNMP. 
+MIB-II definida en el \rfclink{RFC1213} y ampliada con la aparición de las versiones 2 y 3 de SNMP. 
 Este MIB es muy importante porque es obligatorio para todos los agentes SNMP de internet y contiene
 información acerca del sistema, interfaces así como aspectos de IP (incluidas las tablas de
 enrutamiento).
-
 
 Todos los objetos tienen un identificador único denominado OID que permiten la identificación numérica
 de cualquier nodo. Por ejemplo, sirviéndonos de la Figura \ref{fig:mib_tree} podemos ver que el del
@@ -83,43 +81,48 @@ Las operaciones que pueden realizar dentro del protocolo SNMP son las siguientes
 \begin{itemize}
     \item GET: La operación GET es una petición enviada por un gestor a un agente para obtener uno o
     más valores del agente. Figura \ref{fig:snmp_get}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/snmp_get}
+        \caption{SNMP Get Sequence}
+        \label{fig:snmp_get}
+    \end{figure}
+    
     \item GET NEXT: Esta operación es similar a GET. La principal diferencia es que GET NEXT obtiene
     el valor del siguiente OID del árbol MIB.
     \item GET BULK (SNMPv2 y v3): Operación usada para obtener grandes volúmenes de datos desde tablas
     MIB grandes.Figura \ref{fig:snmp_bulk}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/snmp_get_bulk}
+        \caption{SNMP Get Bulk Sequence}
+        \label{fig:snmp_bulk}
+        \end{figure} 
     \item SET: Esta operación es usada por los gestores para modificar o asignar un valor dentro de un
     agente.Figura \ref{fig:snmp_set}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/snmp_set}
+        \caption{SNMP Set Sequence}
+        \label{fig:snmp_set}
+    \end{figure}
     \item TRAPS: Los TRAPS son señales enviadas por los agentes para notificar a los gestores de algún
     evento.Figura \ref{fig:snmp_trap}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/snmp_trap}
+        \caption{SNMP Trap Sequence}
+        \label{fig:snmp_trap}
+    \end{figure}    
     \item INFORM: similar a una TRAP, pero a diferencia de este INFORM incluye la confirmación por
     parte del gestor \gls{SNMP} de la recepción del mensaje
     \item RESPONSE: este es el comando usado para devolver valores a los gestores SNMP.
 \end{itemize}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=.5\linewidth]{graphics/snmp_get}
-    \caption{SNMP Get Sequence}
-    \label{fig:snmp_get}
-\end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=.5\linewidth]{graphics/snmp_set}
-    \caption{SNMP Set Sequence}
-    \label{fig:snmp_set}
-\end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=.5\linewidth]{graphics/snmp_get_bulk}
-    \caption{SNMP Get Bulk Sequence}
-    \label{fig:snmp_bulk}
-\end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=.5\linewidth]{graphics/snmp_trap}
-    \caption{SNMP Trap Sequence}
-    \label{fig:snmp_trap}
-\end{figure}
+
+
+

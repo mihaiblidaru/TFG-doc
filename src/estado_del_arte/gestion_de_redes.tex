@@ -1,0 +1,57 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+El crecimiento de la complejidad de la estructura de las organizaciones en los últimos 40 años ha 
+conllevado también aumento de la complejidad de sus redes de ordenadores. A medida que ampliamos y 
+mejoramos nuestras redes, estas se vuelven más complejas y como resultado más difíciles de 
+administrar. Si hace 40 años un administrador podría llevar a cabo su trabajo usando herramientas 
+muy simples, con el tiempo estas han demostrado ser obsoletas e insuficientes y por este motivo se 
+inició el desarrollo de las tecnologías de gestión de redes necesarias para igualar su nivel de 
+sofisticación.
+
+Durante su desarrollo, los investigadores, desarrolladores y usuarios del conjunto de protocolos 
+DARPA/DoD TCP/IP experimentarón con un amplio conjunto de protocolos en diferentes entornos y 
+configuraciones de red. Internet empezó a crecer debido a la extendida disponibilidad de software
+y hardware que comenzó a soportar este sistema. El crecimiento del el tamaño y el alcance de Internet
+y su uso cada vez mayor en aplicaciones comerciales ha despertado en investigadores, desarrolladores y
+fabricantes la necesidad de desarrollar un \textit{framework} común de gestión para los productos
+TCP / IP.
+
+Para satisfacer estas necesidades, diferentes grupos empezaron a desarrollar conceptos de gestión
+de redes que se pudieran aplicar a Internet y a sus tecnologías. Tres de estas tecnologías realizaron
+suficientes progresos hacia finales de 1987. Estas tres tecnologías fueron el \textit{High-Level Entity Management System(HEMS)}, el \textit{Simple
+Gateway Monitoring Protocol (SGMP)} y el \textit{Common Management Information Service/Protocol}.
+
+Sin embargo, a corto plazo, Internet necesitaba alguna herramienta que solucionase
+los problemas de gestión asociados con su rápido crecimiento. Dado el estado actual de la implementación
+de SGMP y su simplicidad, el consenso general fue que este protocolo debe evolucionar a una especificación
+más completa para poder realizar su despliegue de forma extendida. Poco después, \textbf{\textit{Simple 
+Network Management Protocol (SNMP) }} sustituyo el protocolo SGMP por su facilidad de uso y versatilidad.
+
+A principios del siglo XXI quedó de manifiesto que a pesar de su objetivo original, SNMP no se usaba para
+tareas de configuración sino como una herramienta de monitorización de redes. En Junio de 2002 la La Junta
+de Arquitectura de Internet (Internet Architecture Board o IAB) y miembros clave de la comunidad \gls{IETF}
+se reunieron para evaluar la situación. Principalmente, los operadores de red utilizaban principalmente \glspl{CLI} propietarias para configurar sus
+dispositivos. Además, muchos fabricantes ni siquiera proporcionaban la opción de configurar sus dispositivos
+mediante SNMP. Estas \gls{CLI} tenían algunas características que gustaban a los operadores de red,
+principalmente que usaban protocolos basados en texto a diferencia de SMNP que usaba una codificación BER.
+Aproximadamente al mismo tiempo, Juniper Neworks empezó a experimentar con sistemas de gestión basados en
+\gls{XML}, hecho compartido con la \gls{IETF} que dio lugar a la creación del Grupo de Trabajo NETCONF cuyo
+principal objetivo fue la creación de un protocolo de configuración de redes que se ajustase a las necesidades
+de los operadores de red y fabricantes de dispositivos. La primera versión del protocolo se publicó en el
+\rfclink{RFC4741} en Diciembre de 2006 con varias extensiones publicadas en los años siguientes. Una versión
+mejorada del protocolo fue publicada en el \rfclink{RFC6241} en Junio de 2011.
+
+En 2015 Google desarrollo el protocolo \gls{gRPC} de baja latencia basado el \gls{HTTP}/2.0. A continuación 
+se desarrolla también el protocolo \gls{gNMI} proporcionando características parecidas a Netconf pero 
+mejorando algunos aspectos. En primer lugar \gls{gNMI} usa Protobuf para serialización de datos dando resultado 
+a mensajes de tamaño más reducido comparado con \gls{XML}. También soporta de forma nativa el streaming 
+bidireccional de información muy útil para telemetría mientras que \gls{NETCONF} requiere usar las extensiones 
+Yang PUSH. La última especificación de este protocolo es la versión 0.6.0 publicada el 30 de enero de 2018. 
+
+\subsection{Simple Network Mangement Protocol\label{sec:SNMP}}
+\input{src/estado_del_arte/snmp.tex}
+
+\subsection{Network Configuration Protocol\label{sec:NETCONF}}
+\input{src/estado_del_arte/netconf.tex}
+
+\subsection{Google Network Management Interface\label{sec:gNMI}}
+\input{src/estado_del_arte/gnmi.tex}

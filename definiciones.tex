@@ -1,5 +1,5 @@
 % Clase del documento
-\documentclass[a4paper, 12pt, twoside, openright, titlepage]{book}
+\documentclass[a4paper, 11pt, twoside, openright, titlepage]{book}
 
 %
 % Paquetes necesarios
@@ -72,8 +72,8 @@
 
 
 % La versión del PDF generado será 1.7. Esto permite incluir gráficos en PDF cuya versión
-% es inverior o igual a 1.7. Por defecto la versión es 1.5.
-% El formato 1.7 se ha publicado en 2006 por lo que no debería tener ningun problema
+% es inferior o igual a 1.7. Por defecto la versión es 1.5.
+% El formato 1.7 se ha publicado en 2006 por lo que no debería tener ningún problema
 \pdfminorversion=7
 
 \DeclareBibliographyDriver{standard}{%
@@ -214,3 +214,6 @@
     \vspace{5mm}
     \lstset{basicstyle=\ttfamily\footnotesize,#1}}
   {\endminipage}
+  
+  
+\newcommand{\rfclink}[1]{\href{https://tools.ietf.org/html/#1}{#1}}
