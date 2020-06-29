@@ -49,15 +49,15 @@ El protocolo \gls{NETCONF} proporciona un conjunto pequeño de operaciones de ba
     \item \textbf{edit-config}: Carga todo o parte de una configuración a un datastore especifico.
     \item \textbf{copy-config}: Crea o reemplaza un datastore completo con los contenidos de otro datastore.
     \item \textbf{delete-config}: Elimina un datastore de configuración. El almacén de datos \enquote{running} no puede ser eliminado.
-    \item \textbf{lock}: Permite a un cliente bloquear temporalmente un almacén de datos con el fin de realizar cambios sin interacciones por parte de otros clientes NETCONF.
+    \item \textbf{lock}: Permite a un cliente bloquear temporalmente un almacén de datos con el fin de realizar cambios sin interacciones por parte de otros clientes \gls{NETCONF}.
     \item \textbf{unlock}: Libera el bloqueo iniciado por una operación \enquote{lock} permitiendo de nuevo realizar modificaciones sobre el datastore afectado.
     \item \textbf{close-session}: Solicita la finalización de forma elegante de una sesión de \gls{NETCONF}.
-    \item \textbf{kill-session}: Fuerza la finalización de una sesión NETCONF
+    \item \textbf{kill-session}: Fuerza la finalización de una sesión \gls{NETCONF}
 \end{itemize}
 
 \subsubsection{Contenido}
 
-La última revisión del protocolo NETCONF, el \rfclink{RFC6241}\cite{RFC6241} no proporciona una definición para la capa de Contenido, quedando fuera del alcance de dicho documento. Los datos de configuración se definen mediante el lenguaje de modelado de datos YANG que se explicará en la Sección \ref{sec:yang_data_model}.
+La última revisión del protocolo \gls{NETCONF}, el \rfclink{RFC6241}\cite{RFC6241} no proporciona una definición para la capa de Contenido, quedando fuera del alcance de dicho documento. Los datos de configuración se definen mediante el lenguaje de modelado de datos YANG que se explicará en la Sección \ref{sec:yang_data_model}.
 
 
 
