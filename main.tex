@@ -1,37 +1,9 @@
 % Definiciones y constantes de estilo
-\include{definiciones}
-
-\setlength{\headheight}{15.5pt}
-% Definiciones de comandos
-\newcommand{\nombreautor}{Mihai Blidaru}
-\newcommand{\nombretutor}{Víctor López Álvarez}
-\newcommand{\nombretrabajo}{NETCONF extensions to enable network telemetry}
-\newcommand{\fecha}{\iftoggle{isDraft}{\DTMnow}{\today}}
-\newcommand{\grado}{Grado en Ingeniería Informática}
-% Descomentar si tu trabajo tiene un ponente
-\newcommand{\nombreponente}{Jorge Enrique López de Vergara Méndez}
-% Descomentar si tu trabajo está asociado a un grupo de investigación
-% \newcommand{\grupoInvestigacion}{TODO: Grupo de investigación}
-\newcommand{\departamento}{TODO: Departamento}
-\newcommand{\facultad}{Escuela Politécnica Superior}
-\newcommand{\universidad}{Universidad Autónoma de Madrid}
-\newcommand{\pieparizq}{Netconf Telemetry}
-\newcommand{\pieparcen}{Trabajo de Fin de Grado}
-\newcommand{\logoizq}{Logo_EPS}
-\newcommand{\logoder}{Logo_UAM_2020}
-\newcommand{\correo}{mihai.blidaru@estudiante.uam.es}
-
-
-\hypersetup{
-    pdftitle={\nombretrabajo},
-    pdfauthor={\nombreautor},
-    pdfcreator={Overleaf}
-}
+\input{config.tex}
 
 % Glosario y acrónimos
 \makeglossaries
 \input{src/glosario}
-
 
 % Rerefencias
 \bibliography{src/bibliografia}
@@ -49,7 +21,7 @@
 \hypersetup{pageanchor=true}
 
 % Estilo de párrafo de los capítulos
-\setlength{\parskip}{0.75em}
+%\setlength{\parskip}{0.75em}
 \renewcommand{\baselinestretch}{1.00}
 % Interlineado simple
 \spacing{1}
@@ -73,7 +45,7 @@
 \printglossary[title=Acrónimos,toctitle=Acrónimos,type=\acronymtype]
 
 % Estilo de párrafo de los índices
-\setlength{\parskip}{1pt}
+%\setlength{\parskip}{1pt}
 \renewcommand{\baselinestretch}{1}
 
 %
@@ -85,7 +57,7 @@
 \cleardoublepage
 
 % Estilo de párrafo de los capítulos
-\setlength{\parskip}{1em}
+\setlength{\parskip}{0.5em plus 1pt minus 1pt}
 \renewcommand{\baselinestretch}{1}
 % Interlineado simple
 \spacing{1}
@@ -93,6 +65,7 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \raggedbottom
+
 %
 % Introducción
 %
