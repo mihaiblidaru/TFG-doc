@@ -28,11 +28,22 @@ jobs:
         run: echo "::set-output name=rel_tag::$(date -u '+%y.%m%d.%H%M')"
         
       # compile tex files and build pdf
-      - name: build_pdf
+      - name: clean_before
         run: |
-          chmod +x compilar.sh
           chmod +x limpiar.sh
-          ./compilar.sh
+          ./limpiar.sh
+      
+      - name: Build
+        run: |
+          arara main
+          
+      - name: clean_after
+        run: |
+          ./limpiar.sh
+      
+      - name: rename_pdf
+        run: |
+          mv main.pdf Trabajo_Fin_De_Grado.pdf
           
       - name: Create a Release
         id: create_release
