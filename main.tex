@@ -1,140 +1,76 @@
-% Definiciones y constantes de estilo
-\input{config.tex}
+% arara: clean: {files: [main.aux, main.idx, main.ilg, main.ind, main.bbl, main.bcf, main.blg, main.run.xml, main.fdb_latexmk, main.fls, main.loe, main.lof, main.lol, main.lot, main.ltb, main.out, main.toc, main.upa, main.upb, main.acn, main.acr, main.alg, main.glg, main.glo, main.gls, main.glsdefs, main.idx,  main.ilg, main.xdy, main.loa, main.gnuploterrors , main.mw, main.fdb_latexmk ]}
+% arara: pdflatex: {shell: yes}
+% arara: makeglossaries
+% arara: makeindex: {style: main.ist }
+% arara: bibtex
+% arara: pdflatex: {shell: yes}
+% arara: pdflatex: {shell: yes}
+% arara: clean: {files: [main.aux, main.idx, main.ilg, main.ind, main.bbl, main.bcf, main.blg, main.run.xml, main.fdb_latexmk, main.fls, main.loe, main.lof, main.lol, main.lot, main.ltb, main.out, main.toc, main.upa, main.upb, main.acn, main.acr, main.alg, main.glg, main.glo, main.gls, main.glsdefs, main.idx,  main.ilg, main.xdy, main.loa, main.gnuploterrors , main.mw, main.fdb_latexmk ]}
 
-% Glosario y acrónimos
-\makeglossaries
-\input{src/glosario}
+\documentclass[epsbased, copyright, final, overleaf, printable, extendedindex, firstnumbered, tfg]{tfgtfmthesisuam}
+
+% Comando para poner enlaces a RFCs solo con el nombre del RFC
+% Ejemplo: \rfclink{RFC8461}. Si en el futuro la IETF cambia el formato
+% de las URLs a RFC, este comando generará enlaces rotos
+\newcommand{\rfclink}[1]{\href{https://tools.ietf.org/html/#1}{#1}}
 
 
-% Rerefencias
-\bibliography{src/bibliografia}
+\advisor{Victor Álvarez}
+\levelin{Ingeniería Informática}
+\title{Netconf YANG Push Extension}
+%\speaker{Ponente}
+%\subtitle{Si hace falta subtítulo}
+\author{Mihai Blidaru}
+\privateaddress{C\textbackslash\ Francisco Tomás y Valiente Nº 11}
+\copyrightdate{3 de Noviembre de 2017}
 
-% Inicio del documento
+%\dedication{A mi mujer y a mis hijos}
+\famouscite{Lo peor es cuando has terminado un capítulo\\y la máquina de escribir no aplaude. \\[0.1em] \begin{flushright}Orson Welles\end{flushright}}
+%\prefacefile{inicio/prefacio}
+\ackfile{inicio/agradecimientos}
+\resumenfile{inicio/resumen}
+\abstractfile{inicio/abstract}
+
+\keywords{Network, Telemetry, NETCONF, YANG, Notifications}
+\palabrasclave{Redes, Telemetría, NETCONF, YANG, Notificaciones}
+
+\coverdata
+{
+  Escuela Politécnica Superior \\
+  Universidad Autónoma de Madrid \\
+  C\textbackslash Francisco Tomás y Valiente nº 11
+}
+
+\bibliographyconfig{main}
+
+\datadir{data}
+\graphicsdir{graphics}
+\logosdir{img}
+\codesdir{codes}
+
 \begin{document}
-% Elección del idioma (español)
-\selectlanguage{spanish}
 
-%
-% Portada
-%
-\pagenumbering{gobble}
-\include{portada}
-\hypersetup{pageanchor=true}
+\input{glosario/glosario.tex}
 
-% Estilo de párrafo de los capítulos
-%\setlength{\parskip}{0.75em}
-\renewcommand{\baselinestretch}{1.00}
-% Interlineado simple
-\spacing{1}
+\chapter{Introducción\label{CAP:INTRODUCION}}{introduccion/introduccion}
+  \section{Motivación\label{SEC:MOTIVACION}}{introduccion/motivacion}
+  \section{Objetivos\label{SEC:OBJETIVOS}}{introduccion/objetivos}
+  \section{Estructura del documento\label{SEC:ESTRUCTURA_DEL_DOCUMENTO}}{introduccion/estructuraDelDocumento}
 
-%
-% Agradecimientos
-%
-\pagenumbering{Roman}
-\setcounter{page}{0}
-\include{src/agradecimientos}  
+\chapter{Estado del Arte\label{CAP:ESTADO_DEL_ARTE}}{estadoDelArte/estadoDelArte}
+  \section{Gestión de Redes\label{SEC:GESTION_DE_REDES}}{estadoDelArte/gestionDeRedes/gestionDeRedes}
+    \subsection{Simple Network Mangement Protocol\label{SUBSEC:SNMP}}{estadoDelArte/gestionDeRedes/snmp}
+    \subsection{Network Configuration Protocol\label{SUBSEC:NETCONF}}{estadoDelArte/gestionDeRedes/netconf}
+    \subsection{Google Network Management Interface\label{SUBSEC:GNMI}}{estadoDelArte/gestionDeRedes/gnmi}
+  \section{Yang Data Model\label{SEC:YANG_DATA_MODEL}}{estadoDelArte/yangDataModel}
+  \section{Telemetría\label{SEC:TELEMETRIA}}{estadoDelArte/telemetria}
 
-%
-% Resumen
-%
-\include{src/resumen}
+\chapter{Diseño\label{CAP:DISENHO}}{disenho/disenho}
 
-%
-% Glosario
-%
-\printglossary[title=Glosario,toctitle=Glosario]
-\printglossary[title=Acrónimos,toctitle=Acrónimos,type=\acronymtype]
+\chapter{Desarrollo\label{CAP:DESARROLLO}}{desarrollo/desarrollo}
 
-% Estilo de párrafo de los índices
-%\setlength{\parskip}{1pt}
-\renewcommand{\baselinestretch}{1}
+\chapter{Resultados\label{CAP:RESULTADOS}}{resultados/resultados}
 
-%
-% Tabla de contenidos
-%
-\tableofcontents
-\listoftables
-\listoffigures
-\cleardoublepage
+\chapter{Conclusiones y trabajo futuro\label{CAP:CONCLUSIONES}}{conclusiones/conclusiones}
 
-% Estilo de párrafo de los capítulos
-\setlength{\parskip}{0.5em plus 1pt minus 1pt}
-\renewcommand{\baselinestretch}{1}
-% Interlineado simple
-\spacing{1}
-% Numeración contenido
-\pagenumbering{arabic}
-\setcounter{page}{1}
-\raggedbottom
-
-
-\chapter{Introducción\label{CAP:INTRODUCCION}}{introduccion/introduccion} 
-\section{Motivación}
-
-
-\section{Objetivos}
-
-
-
-\section{Estructura del documento}
-
-
-
-
-
-
-%
-% Introducción
-%
-%\include{src/introduccion}
-%
-% Estado del arte
-%
-\include{src/estadoDelArte}
-\clearpage
-%
-% Diseño
-%
-\include{src/disenho}
-\clearpage
-%
-% Desarrollo
-%
-\include{src/desarrollo}
-\clearpage
-%
-% Resultados
-%
-\include{src/resultados}
-\clearpage
-%
-% Conclusiones
-%
-\include{src/conclusiones} 
-\clearpage
-%
-% Página en blanco
-%
-\cleardoublepage
-
-%
-% Bibliografía
-%
-\printbibliography[heading=bibintoc]
-
-% No expandir elementos para llenar toda la página
-\raggedbottom
-
-%
-% Apéndices
-%
-\appendix
-\cleardoublepage
-\addappheadtotoc
-\appendixpage
-
-% Apéndices del TFG
-\include{src/apendices}
-
-% Fin del documento
 \end{document}

@@ -15,14 +15,15 @@ Existen 4 tipos de datos que puede proporcional un dispositivo de red:
     \item \textbf{Datos de flujo}: Estos datos están siendo generados continuamente o de forma periódicamente.Los datos de flujo muestran el estado de un dispositivo real y requieren mucho ancho de banda y poder de procesamiento.
 \end{itemize}
 
-Como puede verse en la Figura \ref{fig:tipos_de_datos_framework} estos tipos de datos no nos excluyentes.
+Como puede verse en la Figura \ref{FIG:TIPOS_DE_DATOS_FRAMEWORK} estos tipos de datos no nos excluyentes.
 
 \begin{figure}
-    \centering
-    \includegraphics[scale=.75]{graphics/tipos_de_datos_framework}
-    \caption{Relaciones entre los tipos de datos}
-    \label{fig:tipos_de_datos_framework}
+    [Relaciones entre los tipos de datos]
+    {FIG:TIPOS_DE_DATOS_FRAMEWORK}
+    {Relaciones entre los tipos de datos}
+    \image{10cm}{}{tipos_de_datos_framework}
 \end{figure}
+
 
 En general las subscripciones trabajan con datos de flujo o datos basados en eventos mientras que el polling se usa más para datos simples o datos personalizados.
 
@@ -39,39 +40,36 @@ La telemetría se puede dividir también en cuatro módulos, en función del ori
 
 
 Las principales diferencias entre los 4 modulos los podemos ver en la Tabla \ref{tab:diferencias_modulos_data_objects}:
-\begin{table}
-    \centering
-    \begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{2.75cm}|}
-        \hline
-        \textbf{Module} & \textbf{Control Plane} &\textbf{Management Plane} & \textbf{Forwarding Plane} & \textbf{External Data} \\\hline
+% \begin{table}
+%     \centering
+%     \begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{2.75cm}|}
+%         \hline
+%         \textbf{Module} & \textbf{Control Plane} &\textbf{Management Plane} & \textbf{Forwarding Plane} & \textbf{External Data} \\\hline
         
-        \textbf{Object} & control protocol \& signaling, RIB, ACL & config, operation state, MIB & flow \& packet QoS, trafic stat., buffer \& queue stat & terminal, social \& environmental\\\hline
+%         \textbf{Object} & control protocol \& signaling, RIB, ACL & config, operation state, MIB & flow \& packet QoS, trafic stat., buffer \& queue stat & terminal, social \& environmental\\\hline
         
-        \textbf{Export Location }& main control CPU, linecard CPU or fwding chip & main control CPU & fwding chip or linecard CPU; main control CPU unlikely & various \\\hline
+%         \textbf{Export Location }& main control CPU, linecard CPU or fwding chip & main control CPU & fwding chip or linecard CPU; main control CPU unlikely & various \\\hline
         
-        \textbf{Model} & YANG, custom & MIB, syslog, YANG, custom & template, YANG custom & YANG\\\hline
+%         \textbf{Model} & YANG, custom & MIB, syslog, YANG, custom & template, YANG custom & YANG\\\hline
         
-        \textbf{Encoding} & GPB, JSON, XML, plain & GPB, JSON, XML & plain &  GPB, JSON, XML, plain\\\hline
+%         \textbf{Encoding} & GPB, JSON, XML, plain & GPB, JSON, XML & plain &  GPB, JSON, XML, plain\\\hline
         
-        \textbf{Protocol} & gRPC, NETCONF, IPFIX, mirror & gRPC, NETCONF& IPFIX, mirror & gRPC\\\hline
+%         \textbf{Protocol} & gRPC, NETCONF, IPFIX, mirror & gRPC, NETCONF& IPFIX, mirror & gRPC\\\hline
         
-        \textbf{Transport} & HTTP, TCP, UDP & HTTP, TCP & UDP & TCP, UDP \\\hline
+%         \textbf{Transport} & HTTP, TCP, UDP & HTTP, TCP & UDP & TCP, UDP \\\hline
         
         
-        \end{tabular}
+%         \end{tabular}
 
-    \caption{Diferencias entre módulos del framework de telemetría de red}
-    \label{tab:diferencias_modulos_data_objects}
-\end{table}
-
-
-
+%     \caption{Diferencias entre módulos del framework de telemetría de red}
+%     \label{tab:diferencias_modulos_data_objects}
+% \end{table}
 
 
 
 \subsubsection{Evolución de la telemetría de red}
 De la misma forma que las redes tienden a evolucionar hacia una forma de operar mucho más autónoma, la telemetría de red también se puede clasificar en varios niveles en función del nivel de autonomía:
-\begin{enumerate}[label=Nivel \arabic*, leftmargin=4\parindent]
+\begin{enumerate}%[label=Nivel \arabic*, leftmargin=4\parindent]
     \setcounter{enumi}{0}
     \item \textbf{Telemetría estática}: Los datos de telemetría se fijan en la fase de diseño.
     \item \textbf{Telemetría Dinámica}: Los datos de telemetría se pueden programar y configurar de forma dinámica en tiempo de ejecución.
@@ -84,10 +82,10 @@ La mayoría de las tecnologías existentes operan en el nivel 0 o 1 pero con la 
 
 
 \subsection{Network Configuration Notifications\label{sec:NETCONFNot}}
-\Large{INCOMPLETO.}
+INCOMPLETO.
 https://tools.ietf.org/html/rfc5277
 
 \subsection{YANG Push Notifications\label{sec:YANGNot}}
-\Large{INCOMPLETO.}
+INCOMPLETO.
 https://datatracker.ietf.org/doc/rfc8641/
 https://tools.ietf.org/id/draft-ietf-netconf-notification-capabilities-05.html

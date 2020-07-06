@@ -1,4 +1,3 @@
-\chapter{Diseño\label{sec:disenho}}
 
 \section{Base de datos}
 
@@ -10,19 +9,12 @@ proporcione estos datos debe cumplir varias condiciones:
     \item Primero, debe ser capaz de almacenar los datos siguiendo el esquema YANG correspondiente. 
     El lenguaje YANG define una estructura de datos en forma de árbol, definiendo la jerarquía entre
     objetos y pudiéndose codificar en diferentes lenguajes como pueden ser \gls{XML} o \gls{JSON}.
-    Por ejemplo el siguiente modelo YANG ~\ref{lst:ejemplo-yang} se corresponde a los datos \gls{XML}
-    listados en el Código \ref{lst:ejemplo-instancia-yang}:
-    
-    \lstinputlisting[label={lst:ejemplo-yang}, 
-                        frame=single,
-                        caption=Ejemplo de modelo YANG]
-                        {src/code_snippets/ejemplo_yang_1.txt}
-                        
-    \lstinputlisting[label={lst:ejemplo-instancia-yang},
-                        language=XML, 
-                        frame=single,
-                        caption=Una posible instancia del modelo YANG anterior]
-                        {src/code_snippets/ejemplo_intancia_yang.xml}
+    Por ejemplo el siguiente modelo YANG \ref{COD:EJEMPLOMODELOYANG} se corresponde a los datos \gls{XML}
+    listados en el Código \ref{COD:EJEMPLOINSTANCIAYANG}:
+
+    \XMLCode[COD:EJEMPLOMODELOYANG]{Ej. modelo YANG}{Ejemplo de un posible modelo YANG}{ejemplo_yang_1.txt}{}{}{}
+   
+    \XMLCode[COD:EJEMPLOINSTANCIAYANG]{Instancia modelo YANG en XML}{Una posible instancia del modelo YANG anterior en formato XML}{ejemplo_intancia_yang.xml}{}{}{}
 
     \item Debe ser compatible con, al menos, el lenguaje de programación utilizado, en este caso,
     Python 3.x, aunque es preferible que exista soporte para otros lenguajes.
@@ -39,7 +31,7 @@ MongoDB es una base de datos multiplataforma orientada a documentos, clasificada
 datos NoSQL, que usa el lenguaje BSON, muy similar a JSON en vez del modelo tradicional de las 
 bases de datos relacionales donde los datos se almacenan en filas. 
 
-Como podemos ver en la figura~\ref{fig:Mongo_vs_RDBMS}, las tablas se corresponden a colecciones,
+Como podemos ver en la figura~\ref{FIG:MONGO_VS_RDBMS}, las tablas se corresponden a colecciones,
 las filas se corresponden a documentos y las columnas se corresponden a campos de los documentos
 pero con la ventaja de que MongoDB usa un modelo \textit{schemaless}, por tanto, los campos de los
 documentos no son fijos. Dentro de una misma colección cada documento puede tener diferentes campos,
@@ -49,10 +41,10 @@ la colección (en un RDBMS todas las filas tienen las mismas columnas, es menos 
 % TODO: añadir imágen  de objetos distintos en la misma colección emulando uno de los modelos yang.
 
 \begin{figure}
-    \centering
-    \includegraphics[width=10cm]{graphics/MongoDB_vs_RMSBD}
-    \caption{Equivalencias entre MongoDB y RDBMS}
-    \label{fig:Mongo_vs_RDBMS}
+    [Equivalencias entre MongoDB y RDBMS]
+    {FIG:MONGO_VS_RDBMS}
+    {Equivalencias entre MongoDB y RDBMS}
+    \image{10cm}{}{MongoDB_vs_RMSBD}
 \end{figure}
 
 Como ya hemos visto en la introducción de este apéndice, al ser capaz de guardar datos con una
@@ -61,7 +53,7 @@ programación como C, CSharp, C++, Go, Java, Javascript, PHP y \textbf{Python}.
 \subsection{Prometheus}
 Prometheus \cite{prometheus} es una aplicación open-source usada para la monitorización de 
 eventos y envío de alertas en tiempo real. Usa base de datos orientada a series temporales, 
-dónde cada serie se identifica por un nombre, P.E \enquote{Used Bandwidth \%}, y un conjunto 
+dónde cada serie se identifica por un nombre, P.E ``Used Bandwidth \%'', y un conjunto 
 de pares clave-valor. Además, cuenta con un potente lenguaje de consultas llamado PromQL que
 permite la manipulación de series temporales para la generación de gráficos, tablas y alertas.
 
@@ -76,16 +68,14 @@ el \textit{alertmanager} lo que proporciona son alertas basadas en eventos (P.E 
 CPU > 90º durante más de 2 minutos) para administradores de sistemas, ofreciendo diferentes canales
 como Slack, Telegram, Correo, SMS, etc. 
 
-
 \begin{figure}
-    \centering
-    \includegraphics[width=15cm]{graphics/prometheus_architecture.png}
-    \caption{Arquitectura de Prometheus}
-    \label{fig:prometheus_estructura}
+    [Arquitectura de Prometheus]
+    {FIG:PROMETHEUS_ESTRUCTURA}
+    {Arquitectura de Prometheus}
+    \image{15cm}{}{prometheus_architecture}
 \end{figure}
 
 Sin embargo, aunque no sea un sistema adecuado para almacenar los datos de un datastore YANG, se podría estudiar la utilización de Prometheus como sistema de visualización de series temporales que recibiría el cliente a través de notificaciones NETCONF, P.E. el cliente se podría subscribir para recibir la temperatura de la CPU cada 0.5 segundos y se podría utilizar Prometheus para almacenar esa serie temporal y usar sus herramientas de visualización para interpretar los datos 
-
 
 
 \subsection{Redis} 
@@ -101,26 +91,27 @@ a clientes subscribirse a canales para recibir notificaciones de eventos que afe
 Sin embargo, debido a las limitaciones de este tipo de almacenamiento, considero que el sistema no es adecuado.
 
 \begin{figure}
-    \centering
-    \includegraphics[width=15cm]{graphics/redis-data-structure-types.jpeg}
-    \caption{Estructura de Datos de Redis}
-    \label{fig:redis_estructura}
+    [Estructura de Datos de Redis]
+    {FIG:REDIS_ESTRUCTURA}
+    {Estructura de Datos de Redis}
+    \image{15cm}{}{redis-data-structure-types}
 \end{figure}
 
+
 \subsection{Decisión de diseño}
-\Large{INCOMPLETO.}
+INCOMPLETO
 
 
 
 
 \section{Virtualizacion}
-\Large{INCOMPLETO.}
+INCOMPLETO
   \subsection{Maquinas Virtuales}
-  \Large{INCOMPLETO.}
+  INCOMPLETO
   \subsection{Docker}
-  \Large{INCOMPLETO.}
+  INCOMPLETO
   \subsection{Kubernetes}
-  \Large{INCOMPLETO.}
+  INCOMPLETO
 \subsection{Decisión de diseño}
 
 % \begin{figure}

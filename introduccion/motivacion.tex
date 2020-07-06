@@ -1,31 +1,34 @@
-    Esta memoria de \gls{TFG} tiene como propósito describir el objetivo, desarrollo y funcionamiento de las aplicaciones creadas para este proyecto.
-    
-    Hoy en día, miles de millones de dispositivos pueden conectarse a internet. Nuestra vida diaria también ha cambiado bastante con una gran cantidad de aplicaciones de IoT o aplicaciones móviles que están basadas en Internet(P.E etiquetas inteligentes, sensores de monitoreo de salud portátiles \enquote{wearables}, automóviles inteligentes, electrodomésticos conectados, etc). Sin embargo, la mayor cantidad de dispositivos conectados y la proliferación de servicios web y multimedia también suponen un gran impacto en la red que podría estar sujeta a mayores incidentes de red. 
-    
-    La \textbf{telemetría de red} describe cómo se puede recopilar información de varias fuentes de datos utilizando un conjunto de proceso de comunicación automatizados y transmitirlos a los equipos receptores para tareas de análisis. Estas tareas de análisis pueden incluir correlación de eventos, detección de anomalías, monitoreo de rendimiento, análisis de tendencias así como otros procesos relacionados. 
-    
-    La telemetría de red no supone solo un reto técnico sino también uno comercial. La ejecución exitosa de iniciativas de negocio depende de tener una visión de todas las piezas que componen un sistema. Elementos de almacenamiento, unidades de procesamiento y la infraestructura de transporte en una red son fundamentales para el éxito de las aplicaciones modernas y para una buena experiencia del usuario final. 
-    
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.18]{graphics/Telemetry-Visibility-Analytics.png}
-        \caption{Network telemetry, visibility and analytics}
-        \label{fig:Telemetry_bussinesss}
-    \end{figure}
-    
-    El objetivo de este \gls{TFG} es explorar una de las extensiones del protocolo NETCONF que permitiría el envío de notificaciones y datos de telemetría y desarrollar una implementación que demuestre las capacidades de esta extensión.
-    
-    El 17 de Abril de 2016 se publica el primer borrador denominado  \enquote{Subscribing to YANG datastore push updates} en el que se empieza a definir los mecanismos de subscripción de tipo \textit{push} para almacenes de datos (\textit{datastores}) que siguen un esquema YANG, que permiten a aplicaciones cliente solicitar notificaciones a un \textit{datastore} YANG que se envían desde un servidor NETCONF en base a una subscripción, sin necesidad de peticiones adicionales enviadas por el cliente\cite{draft-ietf-netconf-yang-push-00}.
+Esta memoria de \gls{TFG} tiene como propósito describir el objetivo, desarrollo y funcionamiento de las aplicaciones creadas para este proyecto.
 
-    En Septiembre de 2019 tras 25 borradores intermedios se publica el \gls{RFC}8641 en el que se describen los mecanismos que permiten a un cliente solicitar un flujo continuo y personalizado de actualizaciones de un almacén de datos YANG. Estos mecanismos habilitan nuevas capacidades para el monitoreo remoto de la configuración y/o del estado operativo de un dispositivo\cite{RFC8641}.
-    
-    Junto con este \gls{RFC} la \gls{IETF} trabajó en paralelo desarrollando y completando otras especificaciones como podemos ver en la Figura \ref{fig:telemetry_history}. También podemos observar otros desarrollos por parte de otras organizaciones como OpenConfig y Gooogle (gNMI) que intentan definir su propio modelo para telemetría.
-    
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=.5]{graphics/telemetry-history-2-1024x657.jpg}
-        \caption{Model-driven Telemetry: Timeline}
-        \label{fig:telemetry_history}
-    \end{figure}
-    
-    Este trabajo se centrará en el \rfclink{RFC8641}\cite{RFC8641}, que dado que ha sido publicado recientemente, y presenta una oportunidad para estar entre los primeros que implementen y demuestren las capacidades de la extensión definida en dicho \gls{RFC}.
+Hoy en día, miles de millones de dispositivos pueden conectarse a internet. Nuestra vida diaria también ha cambiado bastante con una gran cantidad de aplicaciones de IoT o aplicaciones móviles que están basadas en Internet(P.E etiquetas inteligentes, sensores de monitoreo de salud portátiles ``wearables'', automóviles inteligentes, electrodomésticos conectados, etc). Sin embargo, la mayor cantidad de dispositivos conectados y la proliferación de servicios web y multimedia también suponen un gran impacto en la red que podría estar sujeta a mayores incidentes de red. 
+
+La \textbf{telemetría de red} describe cómo se puede recopilar información de varias fuentes de datos utilizando un conjunto de proceso de comunicación automatizados y transmitirlos a los equipos receptores para tareas de análisis. Estas tareas de análisis pueden incluir correlación de eventos, detección de anomalías, monitoreo de rendimiento, análisis de tendencias así como otros procesos relacionados. 
+
+La telemetría de red no supone solo un reto técnico sino también uno comercial. La ejecución exitosa de iniciativas de negocio depende de tener una visión de todas las piezas que componen un sistema. Elementos de almacenamiento, unidades de procesamiento y la infraestructura de transporte en una red son fundamentales para el éxito de las aplicaciones modernas y para una buena experiencia del usuario final. 
+
+\begin{figure}[Network telemetry, visibility and analytics]{FIG:TELEMETRY_BUSSINES}{Network telemetry, visibility and analytics}
+    \image{10cm}{}{Telemetry-Visibility-Analytics}
+\end{figure}
+
+El objetivo de este \gls{TFG} es explorar una de las extensiones del protocolo NETCONF que permitiría el envío de notificaciones y datos de telemetría y desarrollar una implementación que demuestre las capacidades de esta extensión.
+
+El 17 de Abril de 2016 se publica el primer borrador denominado  ``Subscribing to YANG datastore push updates'' en el que se empieza a definir los mecanismos de subscripción de tipo \textit{push} para almacenes de datos (\textit{datastores}) que siguen un esquema YANG, que permiten a aplicaciones cliente solicitar notificaciones a un \textit{datastore} YANG que se envían desde un servidor NETCONF en base a una subscripción, sin necesidad de peticiones adicionales enviadas por el cliente\cite{draft-ietf-netconf-yang-push-00}.
+
+En Septiembre de 2019 tras 25 borradores intermedios se publica el \gls{RFC}8641 en el que se describen los mecanismos que permiten a un cliente solicitar un flujo continuo y personalizado de actualizaciones de un almacén de datos YANG. Estos mecanismos habilitan nuevas capacidades para el monitoreo remoto de la configuración y/o del estado operativo de un dispositivo\cite{RFC8641}.
+
+Junto con este \gls{RFC} la \gls{IETF} trabajó en paralelo desarrollando y completando otras especificaciones como podemos ver en la Figura \ref{FIG:TELEMETRY_HISTORY}. También podemos observar otros desarrollos por parte de otras organizaciones como OpenConfig y Gooogle (gNMI) que intentan definir su propio modelo para telemetría.
+
+
+\begin{figure}[Model-driven Telemetry: Timeline]{FIG:TELEMETRY_HISTORY}{Model-driven Telemetry: Timeline}
+        \image{10cm}{}{telemetry-history-2-1024x657.jpg}
+\end{figure}
+
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[scale=.5]{graphics/}
+%     \caption{}
+%     \label{}
+% \end{figure}
+
+Este trabajo se centrará en el \rfclink{RFC8641}\cite{RFC8641}, que dado que ha sido publicado recientemente, y presenta una oportunidad para estar entre los primeros que implementen y demuestren las capacidades de la extensión definida en dicho \gls{RFC}.
