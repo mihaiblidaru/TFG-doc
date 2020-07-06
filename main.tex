@@ -7,7 +7,7 @@
 % arara: pdflatex: {shell: yes}
 % arara: clean: {files: [main.aux, main.idx, main.ilg, main.ind, main.bbl, main.bcf, main.blg, main.run.xml, main.fdb_latexmk, main.fls, main.loe, main.lof, main.lol, main.lot, main.ltb, main.out, main.toc, main.upa, main.upb, main.acn, main.acr, main.alg, main.glg, main.glo, main.gls, main.glsdefs, main.idx,  main.ilg, main.xdy, main.loa, main.gnuploterrors , main.mw, main.fdb_latexmk ]}
 
-\documentclass[epsbased, copyright, final, overleaf, printable, extendedindex, firstnumbered, tfg]{tfgtfmthesisuam}
+\documentclass[epsbased, copyright, final, covers, overleaf, printable, extendedindex, firstnumbered, tfg]{tfgtfmthesisuam}
 
 % Comando para poner enlaces a RFCs solo con el nombre del RFC
 % Ejemplo: \rfclink{RFC8461}. Si en el futuro la IETF cambia el formato
@@ -43,10 +43,10 @@
 
 \bibliographyconfig{main}
 
-\datadir{data}
-\graphicsdir{graphics}
-\logosdir{img}
-\codesdir{codes}
+\datadir{./data}
+\graphicsdir{./graphics}
+\logosdir{./imgOficiales}
+\codesdir{./codes}
 
 \begin{document}
 
@@ -72,5 +72,10 @@
 \chapter{Resultados\label{CAP:RESULTADOS}}{resultados/resultados}
 
 \chapter{Conclusiones y trabajo futuro\label{CAP:CONCLUSIONES}}{conclusiones/conclusiones}
+
+%% Aquí empiezan los apendices. Se cambia de numeración, etc.
+\appendix
+
+\chapter{Tabla comparativa bases de datos\label{appendix:bases_de_datos}}{apendices/apendiceA}
 
 \end{document}
