@@ -1,11 +1,4 @@
 #!/bin/bash
 
-# Limpiar archivos auxiliares
-./limpiar.sh
-
-# Compilar
-arara main
-mv main.pdf "Trabajo_Fin_De_Grado.pdf"
-
-# Limpiar archivos auxiliares
-./limpiar.sh
+rm -f *.alg *.acr *.acn *.lof *.log *.lot *.out *.bak *.toc *.xdy *.ist *.gls *.glo *.blg *.aux *.bbl *.glg *.glsdefs main.run.xml main-blx.bib
+cd src/ && rm -f *.alg *.acr *.acn *.lof *.log *.lot *.out *.bak *.toc *.xdy *.ist *.gls *.glo *.blg *.aux *.bbl *.glg *.glsdefs  main.run.xml main-blx.bib && cd ..
