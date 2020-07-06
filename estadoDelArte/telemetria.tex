@@ -40,30 +40,31 @@ La telemetría se puede dividir también en cuatro módulos, en función del ori
 
 
 Las principales diferencias entre los 4 modulos los podemos ver en la Tabla \ref{tab:diferencias_modulos_data_objects}:
-% \begin{table}
-%     \centering
-%     \begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{2.75cm}|}
-%         \hline
-%         \textbf{Module} & \textbf{Control Plane} &\textbf{Management Plane} & \textbf{Forwarding Plane} & \textbf{External Data} \\\hline
+\begin{table}[Comparación entre modulos del framework de telemetría]
+             {tab:diferencias_modulos_data_objects}
+             {Diferencias entre módulos del framework de telemetría de red}
+             
+    \begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{2.75cm}|}
+        \hline
+        \textbf{Module} & \textbf{Control Plane} &\textbf{Management Plane} & \textbf{Forwarding Plane} & \textbf{External Data} \\\hline
         
-%         \textbf{Object} & control protocol \& signaling, RIB, ACL & config, operation state, MIB & flow \& packet QoS, trafic stat., buffer \& queue stat & terminal, social \& environmental\\\hline
+        \textbf{Object} & control protocol \& signaling, RIB, ACL & config, operation state, MIB & flow \& packet QoS, trafic stat., buffer \& queue stat & terminal, social \& environmental\\\hline
         
-%         \textbf{Export Location }& main control CPU, linecard CPU or fwding chip & main control CPU & fwding chip or linecard CPU; main control CPU unlikely & various \\\hline
+        \textbf{Export Location }& main control CPU, linecard CPU or fwding chip & main control CPU & fwding chip or linecard CPU; main control CPU unlikely & various \\\hline
         
-%         \textbf{Model} & YANG, custom & MIB, syslog, YANG, custom & template, YANG custom & YANG\\\hline
+        \textbf{Model} & YANG, custom & MIB, syslog, YANG, custom & template, YANG custom & YANG\\\hline
         
-%         \textbf{Encoding} & GPB, JSON, XML, plain & GPB, JSON, XML & plain &  GPB, JSON, XML, plain\\\hline
+        \textbf{Encoding} & GPB, JSON, XML, plain & GPB, JSON, XML & plain &  GPB, JSON, XML, plain\\\hline
         
-%         \textbf{Protocol} & gRPC, NETCONF, IPFIX, mirror & gRPC, NETCONF& IPFIX, mirror & gRPC\\\hline
+        \textbf{Protocol} & gRPC, NETCONF, IPFIX, mirror & gRPC, NETCONF& IPFIX, mirror & gRPC\\\hline
         
-%         \textbf{Transport} & HTTP, TCP, UDP & HTTP, TCP & UDP & TCP, UDP \\\hline
+        \textbf{Transport} & HTTP, TCP, UDP & HTTP, TCP & UDP & TCP, UDP \\\hline
         
-        
-%         \end{tabular}
+    \end{tabular}
 
-%     \caption{Diferencias entre módulos del framework de telemetría de red}
-%     \label{tab:diferencias_modulos_data_objects}
-% \end{table}
+    %\caption{}
+    %\label{}
+\end{table}
 
 
 

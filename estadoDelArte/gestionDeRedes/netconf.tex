@@ -1,6 +1,6 @@
-El protocolo \gls{NETCONF} es un protocolo de gestión de redes desarrollado y estandarizado por la \gls{IETF}. Fue desarrollado en el grupo de trabajo NETCONF publicado en diciembre de 2006 en el \rfclink{RFC4741} y posteriormente revisado en junio 2011 en el \rfclink{RFC6241}. 
+El protocolo \ac{NETCONF} es un protocolo de gestión de redes desarrollado y estandarizado por la \gls{IETF}. Fue desarrollado en el grupo de trabajo \ac{NETCONF} publicado en diciembre de 2006 en el \rfclink{RFC4741} y posteriormente revisado en junio 2011 en el \rfclink{RFC6241}. 
 
-\gls{NETCONF} proporciona los mecanispos para instalar, manipular y borrar la configuración de dispositivos de red. Las operaciones del protocolo \gls{NETCONF} se realizan mediante \glspl{RPC} y usan una codificación \gls{XML} tanto para los datos que constituyen la configuración como para los mensajes del propio protocolo. 
+\ac{NETCONF} proporciona los mecanispos para instalar, manipular y borrar la configuración de dispositivos de red. Las operaciones del protocolo \ac{NETCONF} se realizan mediante \glspl{RPC} y usan una codificación \gls{XML} tanto para los datos que constituyen la configuración como para los mensajes del propio protocolo. 
 
 El protocolo se puede dividir conceptualmente en cuatro capas que se pueden ver en la Figura \ref{FIG:CAPAS_NETCONF}:
 \begin{itemize}
@@ -20,29 +20,29 @@ El protocolo se puede dividir conceptualmente en cuatro capas que se pueden ver 
 
 \subsubsection{Transporte}
 
-\gls{NETCONF} usa mensajes \glspl{RPC} para comunicarse. Un cliente manda una serie de solicitudes \gls{RPC} que provocan el el servidor responda con una serie de respuestas RPC. \gls{NETCONF} puede usar cualquier protocolo de transporte siempre que este proporcione la funcionalidad necesaria:
+\ac{NETCONF} usa mensajes \glspl{RPC} para comunicarse. Un cliente manda una serie de solicitudes \ac{RPC} que provocan el el servidor responda con una serie de respuestas RPC. \ac{NETCONF} puede usar cualquier protocolo de transporte siempre que este proporcione la funcionalidad necesaria:
 
 \begin{itemize}
-    \item \textbf{Orientado a conexión}: \gls{NETCONF} requiere una conexión persistente entre pares.
+    \item \textbf{Orientado a conexión}: \ac{NETCONF} requiere una conexión persistente entre pares.
     \item \textbf{Autenticación, Integridad y Confidencialidad}
 \end{itemize}
 
-Aunque existe soporte para muchos protocolos de transporte, los más usados son \gls{NETCONF} sobre \gls{SSH} \rfclink{RFC6242}\cite{RFC6242} y \gls{NETCONF} sobre \gls{TLS} con Autenticación mutua usando certificados X.509 \rfclink{RFC7589}\cite{RFC7589}.
+Aunque existe soporte para muchos protocolos de transporte, los más usados son \ac{NETCONF} sobre \ac{SSH} \rfclink{RFC6242}\cite{RFC6242} y \ac{NETCONF} sobre \ac{TLS} con Autenticación mutua usando certificados X.509 \rfclink{RFC7589}\cite{RFC7589}.
 
 \subsubsection{Mensajes}
-La base del protocolo \gls{NETCONF} proporciona tres tipos de mensajes:
+La base del protocolo \ac{NETCONF} proporciona tres tipos de mensajes:
 
 \begin{itemize}
-    \item Solicitudes \gls{RPC} (mensajes <rpc>)
-    \item Respuestas \gls{RPC} (mensajes <rpc-reply>)
+    \item Solicitudes \ac{RPC} (mensajes <rpc>)
+    \item Respuestas \ac{RPC} (mensajes <rpc-reply>)
     \item Notificaciones de eventos (mensajes <notification>)
 \end{itemize}
 
-Cada mensaje del protocolo \gls{NETCONF} es un documento \gls{XML} bien formado y codificado usando UTF-8. Las solicitudes y las respuestas se relacionan entre si mediante un atributo ``message-id'' de forma que el protocolo \gls{NETCONF} permite el ``pipelining'' de mensajes.
+Cada mensaje del protocolo \ac{NETCONF} es un documento \ac{XML} bien formado y codificado usando UTF-8. Las solicitudes y las respuestas se relacionan entre si mediante un atributo ``message-id'' de forma que el protocolo \ac{NETCONF} permite el ``pipelining'' de mensajes.
 
 \subsubsection{Operaciones}
 
-El protocolo \gls{NETCONF} proporciona un conjunto pequeño de operaciones de bajo nivel para gestionar la configuración de los dispositivos y recuperar información de estado. El protocolo base proporciona operaciones para recuperar, configurar, copiar y borrar elementos de configuración. Otras operaciones se pueden añadir en función de las capacidades anunciadas por el dispositivo. Las operaciones básicas son:
+El protocolo \ac{NETCONF} proporciona un conjunto pequeño de operaciones de bajo nivel para gestionar la configuración de los dispositivos y recuperar información de estado. El protocolo base proporciona operaciones para recuperar, configurar, copiar y borrar elementos de configuración. Otras operaciones se pueden añadir en función de las capacidades anunciadas por el dispositivo. Las operaciones básicas son:
 
 \begin{itemize}
     \item \textbf{get}: Recupera la configuración y la información de estado del dispositivo. A diferencia de ``get-config'' también puede recuperar información de estado.
@@ -50,15 +50,15 @@ El protocolo \gls{NETCONF} proporciona un conjunto pequeño de operaciones de ba
     \item \textbf{edit-config}: Carga todo o parte de una configuración a un datastore especifico.
     \item \textbf{copy-config}: Crea o reemplaza un datastore completo con los contenidos de otro datastore.
     \item \textbf{delete-config}: Elimina un datastore de configuración. El almacén de datos ``running'' no puede ser eliminado.
-    \item \textbf{lock}: Permite a un cliente bloquear temporalmente un almacén de datos con el fin de realizar cambios sin interacciones por parte de otros clientes \gls{NETCONF}.
+    \item \textbf{lock}: Permite a un cliente bloquear temporalmente un almacén de datos con el fin de realizar cambios sin interacciones por parte de otros clientes \ac{NETCONF}.
     \item \textbf{unlock}: Libera el bloqueo iniciado por una operación ``lock'' permitiendo de nuevo realizar modificaciones sobre el datastore afectado.
-    \item \textbf{close-session}: Solicita la finalización de forma elegante de una sesión de \gls{NETCONF}.
-    \item \textbf{kill-session}: Fuerza la finalización de una sesión \gls{NETCONF}
+    \item \textbf{close-session}: Solicita la finalización de forma elegante de una sesión de \ac{NETCONF}.
+    \item \textbf{kill-session}: Fuerza la finalización de una sesión \ac{NETCONF}
 \end{itemize}
 
 \subsubsection{Contenido}
 
-La última revisión del protocolo \gls{NETCONF}, el \rfclink{RFC6241}\cite{RFC6241} no proporciona una definición para la capa de Contenido, quedando fuera del alcance de dicho documento. Los datos de configuración se definen mediante el lenguaje de modelado de datos YANG que se explicará en la Sección \ref{SEC:YANG_DATA_MODEL}.
+La última revisión del protocolo \ac{NETCONF}, el \rfclink{RFC6241}\cite{RFC6241} no proporciona una definición para la capa de Contenido, quedando fuera del alcance de dicho documento. Los datos de configuración se definen mediante el lenguaje de modelado de datos YANG que se explicará en la Sección \ref{SEC:YANG_DATA_MODEL}.
 
 
 

@@ -1,4 +1,4 @@
-Esta memoria de \gls{TFG} tiene como propósito describir el objetivo, desarrollo y funcionamiento de las aplicaciones creadas para este proyecto.
+Esta memoria de \ac{TFG} tiene como propósito describir el objetivo, desarrollo y funcionamiento de las aplicaciones creadas para este proyecto.
 
 Hoy en día, miles de millones de dispositivos pueden conectarse a internet. Nuestra vida diaria también ha cambiado bastante con una gran cantidad de aplicaciones de IoT o aplicaciones móviles que están basadas en Internet(P.E etiquetas inteligentes, sensores de monitoreo de salud portátiles ``wearables'', automóviles inteligentes, electrodomésticos conectados, etc). Sin embargo, la mayor cantidad de dispositivos conectados y la proliferación de servicios web y multimedia también suponen un gran impacto en la red que podría estar sujeta a mayores incidentes de red. 
 
@@ -10,13 +10,13 @@ La telemetría de red no supone solo un reto técnico sino también uno comercia
     \image{10cm}{}{Telemetry-Visibility-Analytics}
 \end{figure}
 
-El objetivo de este \gls{TFG} es explorar una de las extensiones del protocolo NETCONF que permitiría el envío de notificaciones y datos de telemetría y desarrollar una implementación que demuestre las capacidades de esta extensión.
+El objetivo de este \ac{TFG} es explorar una de las extensiones del protocolo \ac{NETCONF} que permitiría el envío de notificaciones y datos de telemetría y desarrollar una implementación que demuestre las capacidades de esta extensión.
 
 El 17 de Abril de 2016 se publica el primer borrador denominado  ``Subscribing to YANG datastore push updates'' en el que se empieza a definir los mecanismos de subscripción de tipo \textit{push} para almacenes de datos (\textit{datastores}) que siguen un esquema YANG, que permiten a aplicaciones cliente solicitar notificaciones a un \textit{datastore} YANG que se envían desde un servidor NETCONF en base a una subscripción, sin necesidad de peticiones adicionales enviadas por el cliente\cite{draft-ietf-netconf-yang-push-00}.
 
-En Septiembre de 2019 tras 25 borradores intermedios se publica el \gls{RFC}8641 en el que se describen los mecanismos que permiten a un cliente solicitar un flujo continuo y personalizado de actualizaciones de un almacén de datos YANG. Estos mecanismos habilitan nuevas capacidades para el monitoreo remoto de la configuración y/o del estado operativo de un dispositivo\cite{RFC8641}.
+En Septiembre de 2019 tras 25 borradores intermedios se publica el \ac{RFC}8641 en el que se describen los mecanismos que permiten a un cliente solicitar un flujo continuo y personalizado de actualizaciones de un almacén de datos YANG. Estos mecanismos habilitan nuevas capacidades para el monitoreo remoto de la configuración y/o del estado operativo de un dispositivo\cite{RFC8641}.
 
-Junto con este \gls{RFC} la \gls{IETF} trabajó en paralelo desarrollando y completando otras especificaciones como podemos ver en la Figura \ref{FIG:TELEMETRY_HISTORY}. También podemos observar otros desarrollos por parte de otras organizaciones como OpenConfig y Gooogle (gNMI) que intentan definir su propio modelo para telemetría.
+Junto con este \ac{RFC} la \ac{IETF} trabajó en paralelo desarrollando y completando otras especificaciones como podemos ver en la Figura \ref{FIG:TELEMETRY_HISTORY}. También podemos observar otros desarrollos por parte de otras organizaciones como OpenConfig y Gooogle (gNMI) que intentan definir su propio modelo para telemetría.
 
 
 \begin{figure}[Model-driven Telemetry: Timeline]{FIG:TELEMETRY_HISTORY}{Model-driven Telemetry: Timeline}
@@ -31,4 +31,4 @@ Junto con este \gls{RFC} la \gls{IETF} trabajó en paralelo desarrollando y comp
 %     \label{}
 % \end{figure}
 
-Este trabajo se centrará en el \rfclink{RFC8641}\cite{RFC8641}, que dado que ha sido publicado recientemente, y presenta una oportunidad para estar entre los primeros que implementen y demuestren las capacidades de la extensión definida en dicho \gls{RFC}.
+Este trabajo se centrará en el \rfclink{RFC8641}\cite{RFC8641}, que dado que ha sido publicado recientemente, y presenta una oportunidad para estar entre los primeros que implementen y demuestren las capacidades de la extensión definida en dicho \ac{RFC}.
